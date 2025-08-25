@@ -1,0 +1,241 @@
+.about {
+  margin-top: 80px;
+}
+
+.about-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  text-align: center;
+}
+
+.about-hero h1 {
+  color: white;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.about-content {
+  background: white;
+}
+
+.story-section {
+  padding: 5rem 0;
+}
+
+.story-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-text h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.story-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.story-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-image .image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: 2px dashed #ccc;
+}
+
+.values-section {
+  padding: 5rem 0;
+}
+
+.value-card {
+  padding: 3rem 2rem;
+}
+
+.value-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.value-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.value-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.team-section {
+  padding: 5rem 0;
+}
+
+.team-member {
+  padding: 2rem;
+}
+
+.member-image {
+  margin-bottom: 1.5rem;
+}
+
+.member-image .image-placeholder {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 3px solid var(--light-bg);
+  margin: 0 auto;
+}
+
+.team-member h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.role {
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 1rem !important;
+  font-style: italic;
+}
+
+.team-member p:not(.role) {
+  color: #666;
+  line-height: 1.6;
+}
+
+.awards-section {
+  padding: 5rem 0;
+}
+
+.awards-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.awards-list li {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.awards-list li:last-child {
+  border-bottom: none;
+}
+
+.awards-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+}
+
+.awards-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 4rem 0 3rem;
+  }
+  
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .about-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .story-section,
+  .values-section,
+  .team-section,
+  .awards-section {
+    padding: 3rem 0;
+  }
+  
+  .story-text h2 {
+    font-size: 2rem;
+  }
+  
+  .value-icon {
+    font-size: 3rem;
+  }
+  
+  .value-card,
+  .team-member {
+    padding: 1.5rem;
+  }
+  
+  .awards-text {
+    padding-left: 0;
+    margin-top: 2rem;
+  }
+  
+  .awards-list li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .story-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .story-image .image-placeholder {
+    height: 250px;
+  }
+  
+  .member-image .image-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .value-card,
+  .team-member {
+    padding: 1rem;
+  }
+}
