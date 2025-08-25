@@ -59,7 +59,7 @@ resturant/
 - **Express.js**: Web framework
 - **CORS**: Cross-origin resource sharing
 - **Nodemailer**: Email functionality
-- **Nodemon**: Development auto-restart
+- **Nodemon**: development auto-restart
 
 ### Frontend
 - **React.js**: UI library
