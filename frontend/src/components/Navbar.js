@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ user, logout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -12,6 +12,11 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
   };
 
   return (
@@ -70,6 +75,39 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+            {user ? (
+              <>
+                <li className="nav-item user-info">
+                  <span>Welcome, {user.name}</span>
+                </li>
+                <li className="nav-item">
+                  <button className="nav-link logout-btn" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link 
+                    to="/login" 
+                    className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/signup" 
+                    className={`nav-link ${location.pathname === '/signup' ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
 

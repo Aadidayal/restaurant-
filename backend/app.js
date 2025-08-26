@@ -9,8 +9,13 @@ const { errorHandler, notFound } = require('./src/middleware/errorHandler');
 // Import routes
 const apiRoutes = require('./src/routes');
 
+
 // Load environment variables
 dotenv.config();
+
+// Connect to MongoDB Atlas
+const connectDB = require('./src/config/db');
+connectDB();
 
 // Create Express app
 const app = express();

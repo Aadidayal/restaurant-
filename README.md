@@ -1,12 +1,15 @@
 # Bella Vista Restaurant Website
 
-A modern, responsive restaurant website built with React.js, Node.js, Express, and CSS.
+A modern, responsive restaurant website built with React.js, Node.js, Express, MongoDB Atlas, and CSS with user authentication.
 
 ## 🚀 Features
 
+- **User Authentication**: Secure login/signup system with JWT tokens
+- **Protected Reservations**: Users must login to make table reservations
+- **MongoDB Atlas**: All user data and reservations stored in cloud database
 - **Modern Design**: Clean, elegant interface with responsive design
 - **Interactive Menu**: Dynamic menu with categories (Appetizers, Mains, Desserts)
-- **Online Reservations**: Table booking system with form validation
+- **Online Reservations**: Table booking system with form validation (requires login)
 - **Contact System**: Contact form with email notifications
 - **About Page**: Restaurant story, team, and values
 - **Mobile Responsive**: Optimized for all device sizes
@@ -18,18 +21,24 @@ resturant/
 ├── backend/                    # Node.js Backend
 │   ├── src/
 │   │   ├── config/            # Configuration files
-│   │   │   └── email.js       # Email configuration
+│   │   │   ├── email.js       # Email configuration
+│   │   │   └── db.js          # MongoDB connection
 │   │   ├── controllers/       # Route controllers
 │   │   │   ├── menuController.js
 │   │   │   ├── reservationController.js
 │   │   │   └── contactController.js
-│   │   ├── data/              # Data files
-│   │   │   └── menuData.js    # Menu items data
+│   │   ├── models/            # MongoDB models
+│   │   │   ├── User.js        # User model
+│   │   │   └── Reservation.js # Reservation model
 │   │   ├── middleware/        # Custom middleware
+│   │   │   ├── auth.js        # JWT authentication
 │   │   │   ├── errorHandler.js
 │   │   │   └── logger.js
+│   │   ├── data/              # Data files
+│   │   │   └── menuData.js    # Menu items data
 │   │   └── routes/            # API routes
 │   │       ├── index.js       # Main router
+│   │       ├── authRoutes.js  # Authentication routes
 │   │       ├── menuRoutes.js
 │   │       ├── reservationRoutes.js
 │   │       └── contactRoutes.js
@@ -46,6 +55,8 @@ resturant/
     │   │   ├── About.js & .css
     │   │   ├── Reservations.js & .css
     │   │   ├── Contact.js & .css
+    │   │   ├── Login.js & .css
+    │   │   ├── Signup.js & .css
     │   │   └── Footer.js & .css
     │   ├── App.js             # Main App component
     │   └── App.css            # Global styles
@@ -57,14 +68,18 @@ resturant/
 ### Backend
 - **Node.js**: Runtime environment
 - **Express.js**: Web framework
+- **MongoDB Atlas**: Cloud database for user data and reservations
+- **Mongoose**: MongoDB object modeling
+- **JWT (JSON Web Tokens)**: User authentication
+- **bcryptjs**: Password hashing
 - **CORS**: Cross-origin resource sharing
 - **Nodemailer**: Email functionality
-- **Nodemon**: development auto-restart
+- **Nodemon**: Development auto-restart
 
 ### Frontend
 - **React.js**: UI library
-- **React Router**: Navigation
-- **Axios**: HTTP client
+- **React Router**: Navigation and protected routes
+- **Axios**: HTTP client with authentication headers
 - **CSS3**: Styling with CSS variables and Grid/Flexbox
 
 ## 🚀 Getting Started
@@ -93,6 +108,20 @@ resturant/
    npm install
    ```
 
+4. **Setup MongoDB Atlas**
+   - Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+   - Create a new cluster
+   - Create a database user
+   - Get your connection string
+   - Update `backend/.env` with your MongoDB URI
+
+5. **Configure Environment Variables**
+   Update `backend/.env` file:
+   ```env
+   MONGODB_URI=mongodb+srv://yourusername:yourpassword@cluster.mongodb.net/restaurant?retryWrites=true&w=majority
+   JWT_SECRET=your_very_secure_jwt_secret_key
+   ```
+
 ### Running the Application
 
 1. **Start the Backend Server**
@@ -111,14 +140,18 @@ resturant/
 
 ## 📋 API Endpoints
 
+### Authentication
+- `POST /api/auth/signup` - User registration
+- `POST /api/auth/login` - User login
+
 ### Menu
 - `GET /api/menu` - Get all menu items
 - `GET /api/menu/category/:category` - Get items by category
 - `GET /api/menu/item/:id` - Get specific menu item
 
-### Reservations
-- `POST /api/reservation` - Create a reservation
-- `GET /api/reservation/:id` - Get reservation details
+### Reservations (Protected - Requires Authentication)
+- `POST /api/reservation` - Create a reservation (JWT required)
+- `GET /api/reservation/:id` - Get reservation details (JWT required)
 
 ### Contact
 - `POST /api/contact` - Send contact message

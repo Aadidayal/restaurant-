@@ -5,8 +5,12 @@ const router = express.Router();
 const menuRoutes = require('./menuRoutes');
 const reservationRoutes = require('./reservationRoutes');
 const contactRoutes = require('./contactRoutes');
+const authRoutes = require('./authRoutes');
+const adminRoutes = require('./adminRoutes');
 
 // Mount routes
+router.use('/auth', authRoutes);
+router.use('/admin', adminRoutes);
 router.use('/menu', menuRoutes);
 router.use('/reservation', reservationRoutes);
 router.use('/contact', contactRoutes);

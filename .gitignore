@@ -133,9 +133,20 @@ tmp/
 temp/
 
 # Package lock files (choose one based on your preference)
-# package-lock.json  # Uncomment if using yarn
+package-lock.json     # Lock files can be large and auto-generated
 # yarn.lock          # Uncomment if using npm
 
 # Restaurant specific
 uploads/
 public/uploads/
+
+# Duplicate/old server files
+backend/server.js     # We use app.js now
+frontend/server.js    # If any exists
+
+# Large auto-generated files
+**/package-lock.json
+**/yarn.lock
+
+# MongoDB connection logs
+mongodb.log

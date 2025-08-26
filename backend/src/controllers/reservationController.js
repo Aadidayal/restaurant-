@@ -1,10 +1,11 @@
+
 const { createTransporter } = require('../config/email');
+const Reservation = require('../models/Reservation');
 
 // Handle reservation requests
 const createReservation = async (req, res) => {
   try {
     const { name, email, phone, date, time, guests, message } = req.body;
-    
     // Validate required fields
     if (!name || !email || !phone || !date || !time || !guests) {
       return res.status(400).json({
@@ -12,10 +13,9 @@ const createReservation = async (req, res) => {
         message: 'Please fill in all required fields'
       });
     }
-    
-    // Here you would typically save to a database
-    const reservationData = {
-      id: Date.now(), // Simple ID generation
+    // Save to MongoDB
+    const reservation = await Reservation.create({
+      user: req.user.userId,
       name,
       email,
       phone,
@@ -24,11 +24,7 @@ const createReservation = async (req, res) => {
       guests: parseInt(guests),
       message: message || '',
       status: 'pending',
-      createdAt: new Date().toISOString()
-    };
-    
-    console.log('New reservation received:', reservationData);
-    
+    });
     // Optional: Send confirmation email
     try {
       const transporter = createTransporter();
@@ -50,38 +46,37 @@ const createReservation = async (req, res) => {
           <p>Best regards,<br>Bella Vista Team</p>
         `
       };
-      
       await transporter.sendMail(mailOptions);
     } catch (emailError) {
       console.log('Email notification error:', emailError.message);
-      // Don't fail the reservation if email fails
     }
-    
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: 'Reservation request received! We will contact you shortly to confirm.',
-      reservationId: reservationData.id
+      reservationId: reservation._id
     });
-    
   } catch (error) {
     console.error('Reservation error:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Sorry, there was an error processing your reservation. Please try again.' 
+    res.status(500).json({
+      success: false,
+      message: 'Sorry, there was an error processing your reservation. Please try again.'
     });
   }
 };
 
+
 // Get reservation status (for future use)
-const getReservation = (req, res) => {
+const getReservation = async (req, res) => {
   const { id } = req.params;
-  
-  // This would typically query a database
-  res.json({
-    success: true,
-    message: 'Reservation lookup feature coming soon',
-    reservationId: id
-  });
+  try {
+    const reservation = await Reservation.findOne({ _id: id, user: req.user.userId });
+    if (!reservation) {
+      return res.status(404).json({ success: false, message: 'Reservation not found' });
+    }
+    res.json({ success: true, reservation });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Error fetching reservation' });
+  }
 };
 
 module.exports = {

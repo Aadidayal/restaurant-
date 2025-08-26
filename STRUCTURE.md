@@ -48,26 +48,8 @@ resturant/
 
 ## 🧹 Files Removed (Duplicates & Unused)
 
-### ❌ Removed Duplicates:
-- `backend/server.js` → Replaced by organized `backend/app.js`
 
-### ❌ Removed Unused Files:
-- `frontend/src/logo.svg` → Not used in our design
-- `frontend/src/index.css` → Replaced by comprehensive App.css
-- `frontend/src/App.test.js` → Outdated default test
-- `frontend/src/setupTests.js` → No tests currently
 
-## ✅ Clean Structure Benefits:
-
-1. **No Duplicates**: Each file has a single purpose
-2. **Organized Backend**: MVC pattern with clear separation
-3. **Component-Based Frontend**: Each component with its own CSS
-4. **Easy to Navigate**: Logical folder structure
-5. **Production Ready**: Clean, professional organization
-
-## 🚀 All Set!
-
-Your restaurant website now has a **clean, professional file structure** with:
 - ✅ No duplicate files
 - ✅ Organized backend (MVC pattern)
 - ✅ Component-based frontend

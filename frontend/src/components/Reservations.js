@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Reservations.css';
 
-const Reservations = () => {
+const Reservations = ({ user }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +16,24 @@ const Reservations = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [submitType, setSubmitType] = useState(''); // 'success' or 'error'
+
+  // If user is not logged in, show login prompt
+  if (!user) {
+    return (
+      <div className="reservations">
+        <div className="container">
+          <div className="login-prompt">
+            <h2>Please Login to Make a Reservation</h2>
+            <p>You need to be logged in to make a table reservation at Bella Vista.</p>
+            <div className="auth-buttons">
+              <Link to="/login" className="btn-primary">Login</Link>
+              <Link to="/signup" className="btn-secondary">Sign Up</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +49,12 @@ const Reservations = () => {
     setSubmitMessage('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/reservation', formData);
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:3000/api/reservation', formData, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       
       if (response.data.success) {
         setSubmitType('success');
@@ -47,7 +71,11 @@ const Reservations = () => {
       }
     } catch (error) {
       setSubmitType('error');
-      setSubmitMessage('Sorry, there was an error processing your reservation. Please try again or call us directly.');
+      if (error.response?.status === 401) {
+        setSubmitMessage('Your session has expired. Please login again.');
+      } else {
+        setSubmitMessage('Sorry, there was an error processing your reservation. Please try again or call us directly.');
+      }
       console.error('Reservation error:', error);
     } finally {
       setIsSubmitting(false);
