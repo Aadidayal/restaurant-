@@ -80,7 +80,7 @@ const Menu = () => {
                   <div className="item-details">
                     <div className="item-header">
                       <h3>{item.name}</h3>
-                      <span className="price">${item.price}</span>
+                      <span className="price">₹{item.price}</span>
                     </div>
                     <p className="description">{item.description}</p>
                   </div>
