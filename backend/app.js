@@ -1,6 +1,9 @@
+const dotenv = require('dotenv');
+// Load environment variables FIRST
+dotenv.config();
+
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
 
 // Import middleware
 const { logger, requestLogger } = require('./src/middleware/logger');
@@ -8,10 +11,6 @@ const { errorHandler, notFound } = require('./src/middleware/errorHandler');
 
 // Import routes
 const apiRoutes = require('./src/routes');
-
-
-// Load environment variables
-dotenv.config();
 
 // Connect to MongoDB Atlas
 const connectDB = require('./src/config/db');
