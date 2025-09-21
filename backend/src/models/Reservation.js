@@ -9,7 +9,14 @@ const reservationSchema = new mongoose.Schema({
   time: String,
   guests: Number,
   message: String,
-  status: { type: String, default: 'pending' },
+  status: { 
+    type: String, 
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending' 
+  },
+  adminResponse: { type: String, default: '' },
+  reviewedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  reviewedAt: { type: Date },
   createdAt: { type: Date, default: Date.now }
 });
 

@@ -77,11 +77,44 @@ const Navbar = ({ user, logout }) => {
             </li>
             {user ? (
               <>
-                <li className="nav-item user-info">
-                  <span>Welcome, {user.name}</span>
+                {user.role === 'admin' ? (
+                  <li className="nav-item">
+                    <Link 
+                      to="/admin" 
+                      className={`nav-link admin-link ${location.pathname === '/admin' ? 'active' : ''}`}
+                      onClick={closeMenu}
+                    >
+                      🛡️ Admin Portal
+                    </Link>
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <Link 
+                      to="/my-reservations" 
+                      className={`nav-link ${location.pathname === '/my-reservations' ? 'active' : ''}`}
+                      onClick={closeMenu}
+                    >
+                      � My Reservations
+                    </Link>
+                  </li>
+                )}
+                <li className="nav-item user-section">
+                  <div className="user-info">
+                    <span className="user-avatar">
+                      {user.role === 'admin' ? '👑' : '👤'}
+                    </span>
+                    <div className="user-details">
+                      <span className="user-greeting">Welcome,</span>
+                      <span className="user-name">
+                        {user.name}
+                        {user.role === 'admin' && <span className="admin-badge">Admin</span>}
+                      </span>
+                    </div>
+                  </div>
                 </li>
                 <li className="nav-item">
                   <button className="nav-link logout-btn" onClick={handleLogout}>
+                    <span className="nav-icon">🚪</span>
                     Logout
                   </button>
                 </li>

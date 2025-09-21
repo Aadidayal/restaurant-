@@ -1,0 +1,492 @@
+.admin-portal {
+  padding: 80px 0 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+}
+
+.admin-portal .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.admin-portal h1 {
+  text-align: center;
+  color: rgb(95, 55, 55);
+  margin-bottom: 40px;
+  font-size: 2.8rem;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 1.3rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.error-message {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.9), rgba(200, 35, 51, 0.9));
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid rgba(220, 53, 69, 0.7);
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+  font-weight: 500;
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 15px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tab.active {
+  background: white !important;
+  color: var(--primary-color) !important;
+  border-color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  text-shadow: none;
+}
+
+.reservations-section,
+.users-section {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: block;
+  animation: fadeInUp 0.5s ease-out;
+  color: var(--text-color);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reservations-section h2,
+.users-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  background: transparent;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.reservations-table,
+.users-table {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.reservations-table table,
+.users-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.reservations-table table:hover,
+.users-table table:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reservations-table th,
+.users-table th,
+.reservations-table td,
+.users-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background-color 0.2s ease;
+  color: var(--text-color);
+}
+
+.reservations-table tbody tr:hover,
+.users-table tbody tr:hover {
+  background-color: rgba(139, 69, 19, 0.05);
+}
+
+.reservations-table th,
+.users-table th {
+  background: linear-gradient(135deg, var(--light-bg), #f8f9fa);
+  font-weight: bold;
+  color: var(--primary-color) !important;
+  border-bottom: 3px solid var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  text-shadow: none;
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.customer-info div:not(:first-child) {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.status-badge {
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.role-badge {
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.role-badge.admin {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.role-badge.user {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.btn-details,
+.btn-approve,
+.btn-reject {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-details {
+  background: linear-gradient(135deg, var(--secondary-color), #ff8c42);
+  color: white;
+}
+
+.btn-details:hover {
+  background: linear-gradient(135deg, #ff8c42, var(--accent-color));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-approve {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+}
+
+.btn-approve:hover {
+  background: linear-gradient(135deg, #20c997, #17a2b8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-reject {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+}
+
+.btn-reject:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 25px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.detail-grid > div {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.full-width p {
+  margin: 8px 0 0 0;
+  padding: 10px;
+  background: #e9ecef;
+  border-radius: 6px;
+  font-style: italic;
+}
+
+.admin-actions {
+  border-top: 2px solid #f1f1f1;
+  padding-top: 20px;
+}
+
+.admin-actions h4 {
+  color: #8B4513;
+  margin-bottom: 15px;
+}
+
+.admin-actions textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.admin-actions textarea:focus {
+  outline: none;
+  border-color: #8B4513;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .admin-portal h1 {
+    font-size: 2rem;
+  }
+  
+  .admin-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab {
+    width: 220px;
+    text-align: center;
+  }
+  
+  .reservations-section,
+  .users-section {
+    padding: 20px;
+  }
+  
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .reservations-table,
+  .users-table {
+    font-size: 0.9rem;
+  }
+  
+  .reservations-table th,
+  .users-table th,
+  .reservations-table td,
+  .users-table td {
+    padding: 10px 8px;
+  }
+}
+
+/* Empty state styles */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-color);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+}

@@ -31,7 +31,13 @@ const Login = ({ setUser }) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         setUser(response.data.user);
-        navigate('/reservations');
+        
+        // Redirect based on user role
+        if (response.data.user.role === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/reservations');
+        }
       }
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');
