@@ -36,7 +36,7 @@ app.use(requestLogger);
 app.get('/', (req, res) => {
   res.json({ 
     success: true,
-    message: 'Welcome to Bella Vista Restaurant API!',
+    message: 'Welcome to Rahul Sir Da Dhaba API!',
     version: '1.0.0',
     endpoints: {
       menu: '/api/menu',
@@ -57,7 +57,7 @@ app.use(errorHandler);
 // Start server
 app.listen(PORT, () => {
   console.log(`
-🍽️  Bella Vista Restaurant API Server
+🍽️  Rahul Sir Da Dhaba API Server
 🚀 Server running on port ${PORT}
 🌐 Environment: ${process.env.NODE_ENV || 'development'}
 📊 API Health Check: http://localhost:${PORT}/api/health

@@ -13,7 +13,7 @@ const Footer = () => {
             
             {/* Restaurant Info */}
             <div className="footer-section">
-              <h3>Bella Vista</h3>
+              <h3>Rahul Sir Da Dhaba</h3>
               <p>
                 Authentic Italian cuisine served with passion and tradition since 1985. 
                 Experience the taste of Italy in every bite.
@@ -52,7 +52,7 @@ const Footer = () => {
                 </div>
                 <div className="contact-item">
                   <span className="icon">✉️</span>
-                  <span>info@bellavista.com</span>
+                  <span>info@dhaba.com</span>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="container">
           <div className="bottom-content">
             <div className="copyright">
-              <p>&copy; {currentYear} Bella Vista Restaurant. All rights reserved.</p>
+              <p>&copy; {currentYear} Rahul Sir Da Dhaba. All rights reserved.</p>
             </div>
             <div className="footer-links-bottom">
               <a href="#">Privacy Policy</a>

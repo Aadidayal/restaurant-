@@ -24,7 +24,7 @@ const Reservations = ({ user }) => {
         <div className="container">
           <div className="login-prompt">
             <h2>Please Login to Make a Reservation</h2>
-            <p>You need to be logged in to make a table reservation at Bella Vista.</p>
+            <p>You need to be logged in to make a table reservation at Rahul Sir Da Dhaba.</p>
             <div className="auth-buttons">
               <Link to="/login" className="btn-primary">Login</Link>
               <Link to="/signup" className="btn-secondary">Sign Up</Link>

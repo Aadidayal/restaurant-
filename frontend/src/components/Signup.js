@@ -63,7 +63,7 @@ const Signup = ({ setUser }) => {
   return (
     <div className="signup-container">
       <div className="signup-form">
-        <h2>Join Bella Vista</h2>
+        <h2>Join Rahul Sir Da Dhaba</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Full Name:</label>

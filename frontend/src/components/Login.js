@@ -49,7 +49,7 @@ const Login = ({ setUser }) => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h2>Login to Bella Vista</h2>
+        <h2>Login to Rahul Sir Da Dhaba</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>

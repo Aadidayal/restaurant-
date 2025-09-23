@@ -24,7 +24,7 @@ const Navbar = ({ user, logout }) => {
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" onClick={closeMenu}>
-            <h2>Bella Vista</h2>
+            <h2>Rahul Sir Da Dhaba</h2>
           </Link>
         </div>
         

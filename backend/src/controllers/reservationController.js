@@ -29,9 +29,9 @@ const createReservation = async (req, res) => {
     try {
       const transporter = createTransporter();
       const mailOptions = {
-        from: process.env.EMAIL_USER || 'noreply@bellavista.com',
+        from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
         to: email,
-        subject: 'Reservation Confirmation - Bella Vista',
+        subject: 'Reservation Confirmation - Rahul Sir Da Dhaba',
         html: `
           <h2>Reservation Confirmation</h2>
           <p>Dear ${name},</p>
@@ -43,7 +43,7 @@ const createReservation = async (req, res) => {
             <li><strong>Special Requests:</strong> ${message || 'None'}</li>
           </ul>
           <p>We will contact you shortly to confirm your reservation.</p>
-          <p>Best regards,<br>Bella Vista Team</p>
+          <p>Best regards,<br>Rahul Sir Da Dhaba Team</p>
         `
       };
       await transporter.sendMail(mailOptions);

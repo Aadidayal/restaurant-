@@ -1,4 +1,4 @@
-# Bella Vista Restaurant Website
+# Rahul Sir Da Dhaba Website
 
 A modern, responsive restaurant website built with React.js, Node.js, Express, MongoDB Atlas, and CSS with user authentication.
 
@@ -176,7 +176,7 @@ To enable email functionality:
    ```env
    EMAIL_USER=your_email@gmail.com
    EMAIL_PASS=your_app_password
-   RESTAURANT_EMAIL=restaurant@bellavista.com
+   RESTAURANT_EMAIL=restaurant@rahulsirdadhaba.com
    ```
 
 2. Uncomment email configuration in `src/config/email.js`
@@ -190,7 +190,7 @@ PORT=3000
 NODE_ENV=development
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
-RESTAURANT_EMAIL=restaurant@bellavista.com
+RESTAURANT_EMAIL=restaurant@rahulsirdadhaba.com
 FRONTEND_URL=http://localhost:3001
 ```
 
@@ -226,6 +226,6 @@ FRONTEND_URL=http://localhost:3001
 
 This project is licensed under the MIT License.
 
-## 🍽️ About Bella Vista
+## 🍽️ About Rahul Sir Da Dhaba
 
-Bella Vista is a fictional Italian restaurant showcasing modern web development practices for the hospitality industry. This project demonstrates full-stack development with React and Node.js.
+Rahul Sir Da Dhaba is a fictional restaurant showcasing modern web development practices for the hospitality industry. This project demonstrates full-stack development with React and Node.js.

@@ -6,7 +6,7 @@ const About = () => {
     <div className="about">
       <div className="about-hero">
         <div className="container">
-          <h1>About Bella Vista</h1>
+          <h1>About Rahul Sir Da Dhaba</h1>
           <p>A culinary journey that began in 1985</p>
         </div>
       </div>
@@ -20,9 +20,9 @@ const About = () => {
               <div className="story-text">
                 <h2>Our Story</h2>
                 <p>
-                  Bella Vista was born from a simple dream: to bring authentic Italian flavors 
-                  to our community. Founded in 1985 by Giuseppe and Maria Rossi, our family 
-                  restaurant has been a cornerstone of fine dining for nearly four decades.
+                  Rahul Sir Da Dhaba was born from a simple dream: to bring authentic flavors 
+                  to our community. Founded in 1985, our family restaurant has been a beloved
+                  destination for nearly four decades.
                 </p>
                 <p>
                   What started as a small trattoria has grown into a beloved establishment, 

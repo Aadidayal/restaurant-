@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroimg from '../heroimg.png';
+import interiorimg from '../interiorimg.png';
+import butterchickenimg from '../butterchickenimg.png';
+import paneerimg from '../paneerimg.png';
+import chollebhatureimg from '../chollebhatureimg.png';
 import './Home.css';
 
 const Home = () => {
@@ -7,8 +12,9 @@ const Home = () => {
     <div className="home">
       {/* Hero Section */}
       <section className="hero">
+        <img src={heroimg} alt="Restaurant Hero" className="hero-img" />
         <div className="hero-content">
-          <h1>Welcome to Bella Vista</h1>
+         
           <p>Experience authentic Italian cuisine in an elegant atmosphere</p>
           <div className="hero-buttons">
             <Link to="/menu" className="btn">View Menu</Link>
@@ -21,7 +27,7 @@ const Home = () => {
       {/* Features Section */}
       <section className="features section">
         <div className="container">
-          <h2 className="text-center mb-4">Why Choose Bella Vista?</h2>
+          <h2 className="text-center mb-4">Why Choose Rahul Sir Da Dhaba?</h2>
           <div className="grid grid-3">
             <div className="feature-card card text-center">
               <div className="feature-icon">🍝</div>
@@ -49,21 +55,17 @@ const Home = () => {
             <div className="about-text">
               <h2>Our Story</h2>
               <p>
-                Since 1985, Bella Vista has been serving the finest Italian cuisine in the heart of the city. 
+                Since 1985, Rahul Sir Da Dhaba has been serving the finest cuisine in the heart of the city. 
                 Our family-owned restaurant combines traditional recipes with modern culinary techniques to 
                 create an unforgettable dining experience.
               </p>
               <p>
-                From our wood-fired pizzas to our handmade pasta, every dish is crafted with love and 
-                attention to detail. We source only the freshest ingredients and work with local suppliers 
-                to ensure quality in every bite.
+From our sizzling tandoor to our slow-cooked curries, every dish is prepared with the authentic flavors of Punjab. We use fresh, homemade ingredients and traditional recipes passed down through generations to ensure a taste that feels like home.
               </p>
               <Link to="/about" className="btn mt-3">Learn More</Link>
             </div>
             <div className="about-image">
-              <div className="image-placeholder">
-                <span>Restaurant Interior</span>
-              </div>
+              <img src={interiorimg} alt="Restaurant Interior" className="interior-img" />
             </div>
           </div>
         </div>
@@ -76,32 +78,32 @@ const Home = () => {
           <div className="grid grid-3">
             <div className="menu-item card">
               <div className="item-image">
-                <div className="image-placeholder">Pasta Carbonara</div>
+                <img src={butterchickenimg} alt="Butter Chicken" className="dish-img" />
               </div>
               <div className="item-content">
-                <h3>Pasta Carbonara</h3>
-                <p>Creamy pasta with bacon, eggs, and parmesan cheese</p>
-                <span className="price">$17.99</span>
+                <h3>Butter Chicken</h3>
+                <p>Creamy tomato-based curry with tender chicken pieces</p>
+                <span className="price">₹299.99</span>
               </div>
             </div>
             <div className="menu-item card">
               <div className="item-image">
-                <div className="image-placeholder">Grilled Salmon</div>
+                <img src={paneerimg} alt="Shahi Paneer" className="dish-img" />
               </div>
               <div className="item-content">
-                <h3>Grilled Salmon</h3>
-                <p>Atlantic salmon with herbs, served with roasted vegetables</p>
-                <span className="price">$24.99</span>
+                <h3>Shahi Paneer</h3>
+                <p>Creamy paneer curry with a rich tomato gravy</p>
+                <span className="price">₹249.99</span>
               </div>
             </div>
             <div className="menu-item card">
               <div className="item-image">
-                <div className="image-placeholder">Tiramisu</div>
+                <img src={chollebhatureimg} alt="Cholle Bhature" className="dish-img" />
               </div>
               <div className="item-content">
-                <h3>Tiramisu</h3>
-                <p>Classic Italian dessert with coffee-soaked ladyfingers</p>
-                <span className="price">$8.99</span>
+                <h3>Cholle Bhature</h3>
+                <p>Spicy chickpeas served with deep-fried bread</p>
+                <span className="price">₹129.99</span>
               </div>
             </div>
           </div>

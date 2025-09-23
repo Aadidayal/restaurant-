@@ -173,7 +173,7 @@ const Contact = () => {
                     <div className="contact-icon">✉️</div>
                     <div className="contact-details">
                       <h3>Email Us</h3>
-                      <p>General: info@bellavista.com<br />Events: events@bellavista.com</p>
+                      <p>General: info@rahulsirdadhaba.com<br />Events: events@rahulsirdadhaba.com</p>
                     </div>
                   </div>
 
