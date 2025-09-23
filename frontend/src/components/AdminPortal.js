@@ -34,10 +34,10 @@ const AdminPortal = () => {
       ]);
 
       if (reservationsRes.data.success) {
-        setReservations(reservationsRes.data.reservations);
+        setReservations(reservationsRes.data.reservations || []);
       }
       if (usersRes.data.success) {
-        setUsers(usersRes.data.users);
+        setUsers(usersRes.data.users || []);
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Error fetching data');
@@ -116,15 +116,15 @@ const AdminPortal = () => {
             <h2>Reservation Management</h2>
             <div className="stats">
               <div className="stat-card">
-                <span className="stat-number">{reservations.filter(r => r.status === 'pending').length}</span>
+                <span className="stat-number">{reservations.filter(r => r && r.status === 'pending').length}</span>
                 <span className="stat-label">Pending</span>
               </div>
               <div className="stat-card">
-                <span className="stat-number">{reservations.filter(r => r.status === 'approved').length}</span>
+                <span className="stat-number">{reservations.filter(r => r && r.status === 'approved').length}</span>
                 <span className="stat-label">Approved</span>
               </div>
               <div className="stat-card">
-                <span className="stat-number">{reservations.filter(r => r.status === 'rejected').length}</span>
+                <span className="stat-number">{reservations.filter(r => r && r.status === 'rejected').length}</span>
                 <span className="stat-label">Rejected</span>
               </div>
             </div>
@@ -232,7 +232,7 @@ const AdminPortal = () => {
                         </td>
                         <td>{formatDate(user.createdAt)}</td>
                         <td>
-                          {reservations.filter(r => r.user._id === user._id).length}
+                          {reservations.filter(r => r.user && r.user._id === user._id).length}
                         </td>
                       </tr>
                     ))}

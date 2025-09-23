@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { 
+  paneertikkaimg,
+  chicken65img, 
+  samosaimg,
+  paneerbuttermasalaimg,
+  dalmakhaniimg,
+  chollebhatureimg,
+  butterchickenimg,
+  gulabjamunimg,
+  rasmalaiimg,
+  kheerimg
+} from '../assets/images';
 import './Menu.css';
 
 const Menu = () => {
@@ -10,6 +22,23 @@ const Menu = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Function to get image for each dish
+  const getImageForDish = (dishName) => {
+    const imageMap = {
+      'Paneer Tikka': paneertikkaimg,
+      'Chicken 65': chicken65img,
+      'Samosa': samosaimg,
+      'Paneer Butter Masala': paneerbuttermasalaimg,
+      'Dal Makhani': dalmakhaniimg,
+      'Chole Bhature': chollebhatureimg,
+      'Butter Chicken': butterchickenimg,
+      'Gulab Jamun': gulabjamunimg,
+      'Rasmalai': rasmalaiimg,
+      'Kheer': kheerimg
+    };
+    return imageMap[dishName] || null;
+  };
 
   useEffect(() => {
     fetchMenu();
@@ -73,9 +102,13 @@ const Menu = () => {
               {menuData.appetizers.map(item => (
                 <div key={item.id} className="menu-item">
                   <div className="item-image">
-                    <div className="image-placeholder">
-                      {item.name}
-                    </div>
+                    {getImageForDish(item.name) ? (
+                      <img src={getImageForDish(item.name)} alt={item.name} className="dish-img" />
+                    ) : (
+                      <div className="image-placeholder">
+                        {item.name}
+                      </div>
+                    )}
                   </div>
                   <div className="item-details">
                     <div className="item-header">
@@ -96,14 +129,18 @@ const Menu = () => {
               {menuData.mains.map(item => (
                 <div key={item.id} className="menu-item">
                   <div className="item-image">
-                    <div className="image-placeholder">
-                      {item.name}
-                    </div>
+                    {getImageForDish(item.name) ? (
+                      <img src={getImageForDish(item.name)} alt={item.name} className="dish-img" />
+                    ) : (
+                      <div className="image-placeholder">
+                        {item.name}
+                      </div>
+                    )}
                   </div>
                   <div className="item-details">
                     <div className="item-header">
                       <h3>{item.name}</h3>
-                      <span className="price">${item.price}</span>
+                      <span className="price">₹{item.price}</span>
                     </div>
                     <p className="description">{item.description}</p>
                   </div>
@@ -119,14 +156,18 @@ const Menu = () => {
               {menuData.desserts.map(item => (
                 <div key={item.id} className="menu-item">
                   <div className="item-image">
-                    <div className="image-placeholder">
-                      {item.name}
-                    </div>
+                    {getImageForDish(item.name) ? (
+                      <img src={getImageForDish(item.name)} alt={item.name} className="dish-img" />
+                    ) : (
+                      <div className="image-placeholder">
+                        {item.name}
+                      </div>
+                    )}
                   </div>
                   <div className="item-details">
                     <div className="item-header">
                       <h3>{item.name}</h3>
-                      <span className="price">${item.price}</span>
+                      <span className="price">₹{item.price}</span>
                     </div>
                     <p className="description">{item.description}</p>
                   </div>

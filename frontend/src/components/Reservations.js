@@ -236,12 +236,12 @@ const Reservations = ({ user }) => {
                 
                 <div className="info-item">
                   <h3>📍 Location</h3>
-                  <p>123 Culinary Street<br />Downtown District<br />City, State 12345</p>
+                  <p>Chitkara University<br />Rajpura<br />Punjab</p>
                 </div>
 
                 <div className="info-item">
                   <h3>📞 Contact</h3>
-                  <p>Phone: (555) 123-4567<br />Email: info@bellavista.com</p>
+                  <p>Phone: (9877)-540-341<br />Email: info@dhaba.com</p>
                 </div>
 
                 <div className="info-item">
