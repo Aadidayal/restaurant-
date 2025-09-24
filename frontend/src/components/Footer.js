@@ -15,8 +15,8 @@ const Footer = () => {
             <div className="footer-section">
               <h3>Rahul Sir Da Dhaba</h3>
               <p>
-                Authentic Italian cuisine served with passion and tradition since 1985. 
-                Experience the taste of Italy in every bite.
+                Authentic Indian cuisine served with passion and tradition since 1985. 
+                Experience the taste of India in every bite.
               </p>
               <div className="social-links">
                 <a href="#" className="social-link">📘</a>
@@ -44,11 +44,11 @@ const Footer = () => {
               <div className="contact-info">
                 <div className="contact-item">
                   <span className="icon">📍</span>
-                  <span>123 Culinary Street<br />Downtown District<br />City, State 12345</span>
+                  <span>Chitkara University<br />Rajpura<br />Punjab</span>
                 </div>
                 <div className="contact-item">
                   <span className="icon">📞</span>
-                  <span>(555) 123-4567</span>
+                  <span>(9877)-540-341</span>
                 </div>
                 <div className="contact-item">
                   <span className="icon">✉️</span>

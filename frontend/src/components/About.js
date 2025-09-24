@@ -1,4 +1,5 @@
 import React from 'react';
+import { ourstoryimg } from '../assets/images';
 import './About.css';
 
 const About = () => {
@@ -35,9 +36,7 @@ const About = () => {
                 </p>
               </div>
               <div className="story-image">
-                <div className="image-placeholder">
-                  <span>Giuseppe & Maria Rossi</span>
-                </div>
+                <img src={ourstoryimg} alt="Our Story" className="story-img" />
               </div>
             </div>
           </section>
@@ -74,7 +73,7 @@ const About = () => {
                 <div className="member-image">
                   <div className="image-placeholder">Chef Marco</div>
                 </div>
-                <h3>Chef Marco Rossi</h3>
+                <h3>Chef Marco Yadav</h3>
                 <p className="role">Executive Chef</p>
                 <p>With over 20 years of experience, Chef Marco brings creativity and passion to every dish.</p>
               </div>
@@ -82,17 +81,17 @@ const About = () => {
                 <div className="member-image">
                   <div className="image-placeholder">Sofia</div>
                 </div>
-                <h3>Sofia Rossi</h3>
+                <h3>Madan Kumar</h3>
                 <p className="role">Restaurant Manager</p>
-                <p>Sofia ensures every guest feels like family with her warm hospitality and attention to detail.</p>
+                <p>Madan ensures every guest feels like family with his warm hospitality and attention to detail.</p>
               </div>
               <div className="team-member card text-center">
                 <div className="member-image">
                   <div className="image-placeholder">Chef Anna</div>
                 </div>
-                <h3>Chef Anna Bianchi</h3>
-                <p className="role">Pastry Chef</p>
-                <p>Anna creates our divine desserts, bringing sweet endings to every memorable meal.</p>
+                <h3>Chef Khesri Lal</h3>
+                <p className="role">Tadka Expert</p>
+                <p>Khesri brings the authentic flavors of Punjab to life with his expert tadka techniques.</p>
               </div>
             </div>
           </section>
@@ -104,7 +103,7 @@ const About = () => {
               <div className="grid grid-2">
                 <div className="awards-list">
                   <ul>
-                    <li>🏆 Best Italian Restaurant 2023 - City Dining Awards</li>
+                    <li>🏆 Best Indian Restaurant 2023 - City Dining Awards</li>
                     <li>⭐ Michelin Recommended 2022</li>
                     <li>🍷 Wine Spectator Award of Excellence 2021</li>
                     <li>👑 OpenTable Diners' Choice 2020-2023</li>

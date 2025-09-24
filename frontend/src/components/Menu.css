@@ -78,6 +78,17 @@
   overflow: hidden;
 }
 
+.item-image .dish-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-image .dish-img:hover {
+  transform: scale(1.05);
+}
+
 .item-image .image-placeholder {
   height: 100%;
   background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);

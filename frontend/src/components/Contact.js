@@ -157,7 +157,7 @@ const Contact = () => {
                     <div className="contact-icon">📍</div>
                     <div className="contact-details">
                       <h3>Visit Us</h3>
-                      <p>123 Culinary Street<br />Downtown District<br />City, State 12345</p>
+                      <p>Chitkara University<br />Rajpura<br />Punjab</p>
                     </div>
                   </div>
 
@@ -165,7 +165,7 @@ const Contact = () => {
                     <div className="contact-icon">📞</div>
                     <div className="contact-details">
                       <h3>Call Us</h3>
-                      <p>Main: (555) 123-4567<br />Reservations: (555) 123-4568</p>
+                      <p>Main: (9877)-540-341<br />Reservations: (555)-547-222</p>
                     </div>
                   </div>
 
@@ -173,7 +173,7 @@ const Contact = () => {
                     <div className="contact-icon">✉️</div>
                     <div className="contact-details">
                       <h3>Email Us</h3>
-                      <p>General: info@rahulsirdadhaba.com<br />Events: events@rahulsirdadhaba.com</p>
+                      <p>General: info@dhaba.com<br />Events: events@rahulsirdadhaba.com</p>
                     </div>
                   </div>
 
@@ -202,10 +202,10 @@ const Contact = () => {
                 <div className="social-section">
                   <h3>Follow Us</h3>
                   <div className="social-links">
-                    <a href="#" className="social-link">📘 Facebook</a>
-                    <a href="#" className="social-link">📷 Instagram</a>
-                    <a href="#" className="social-link">🐦 Twitter</a>
-                    <a href="#" className="social-link">⭐ Yelp</a>
+                    <a href="#" className="social-link">📘</a>
+                    <a href="#" className="social-link">📷</a>
+                    <a href="#" className="social-link">🐦</a>
+                    <a href="#" className="social-link">⭐</a>
                   </div>
                 </div>
               </div>
@@ -220,7 +220,7 @@ const Contact = () => {
               <div className="map-placeholder">
                 <div className="map-content">
                   <h3>🗺️ Interactive Map</h3>
-                  <p>123 Culinary Street, Downtown District</p>
+                  <p>Chitkara University, Rajpura (Punjab)</p>
                   <p>Located in the heart of the city's dining district</p>
                   <div className="map-features">
                     <span>🚗 Valet Parking Available</span>

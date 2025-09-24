@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import heroimg from '../heroimg.png';
-import interiorimg from '../interiorimg.png';
-import butterchickenimg from '../butterchickenimg.png';
-import paneerimg from '../paneerimg.png';
-import chollebhatureimg from '../chollebhatureimg.png';
+import { 
+  heroimg, 
+  interiorimg, 
+  butterchickenimg, 
+  paneerimg, 
+  chollebhatureimg 
+} from '../assets/images';
 import './Home.css';
 
 const Home = () => {
@@ -18,7 +20,7 @@ const Home = () => {
           <p>Experience authentic Italian cuisine in an elegant atmosphere</p>
           <div className="hero-buttons">
             <Link to="/menu" className="btn">View Menu</Link>
-            <Link to="/reservations" className="btn btn-outline">Make Reservation</Link>
+            <Link to="/reservations" className="btn">Make Reservation</Link>
           </div>
         </div>
         <div className="hero-overlay"></div>
@@ -32,7 +34,7 @@ const Home = () => {
             <div className="feature-card card text-center">
               <div className="feature-icon">🍝</div>
               <h3>Authentic Recipes</h3>
-              <p>Traditional Italian recipes passed down through generations, prepared with the finest ingredients.</p>
+              <p>Traditional Indian recipes passed down through generations, prepared with the finest ingredients.</p>
             </div>
             <div className="feature-card card text-center">
               <div className="feature-icon">👨‍🍳</div>
