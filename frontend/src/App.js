@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Menu from './components/Menu';
@@ -32,23 +33,25 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Navbar user={user} logout={logout} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/reservations" element={<Reservations user={user} />} />
-          <Route path="/my-reservations" element={<MyReservations />} />
-          <Route path="/admin" element={<AdminPortal />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/signup" element={<Signup setUser={setUser} />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Navbar user={user} logout={logout} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/reservations" element={<Reservations user={user} />} />
+            <Route path="/my-reservations" element={<MyReservations />} />
+            <Route path="/admin" element={<AdminPortal />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/signup" element={<Signup setUser={setUser} />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

@@ -27,7 +27,7 @@ const Contact = () => {
     setSubmitMessage('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/contact', formData);
+      const response = await axios.post('http://localhost:5000/api/contact', formData);
       
       if (response.data.success) {
         setSubmitType('success');

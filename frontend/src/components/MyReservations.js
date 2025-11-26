@@ -20,7 +20,7 @@ const MyReservations = () => {
         return;
       }
 
-      const response = await axios.get('http://localhost:3000/api/admin/my-reservations', {
+      const response = await axios.get('http://localhost:5000/api/admin/my-reservations', {
         headers: { Authorization: `Bearer ${token}` }
       });
 

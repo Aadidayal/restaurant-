@@ -46,7 +46,7 @@ const Menu = () => {
 
   const fetchMenu = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/menu');
+      const response = await axios.get('http://localhost:5000/api/menu');
       setMenuData(response.data);
       setLoading(false);
     } catch (err) {

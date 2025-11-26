@@ -7,7 +7,9 @@
 body {
   font-family: 'Georgia', 'Times New Roman', serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
@@ -24,17 +26,17 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3rem;
-  color: #2c1810;
+  color: var(--text-color);
 }
 
 h2 {
   font-size: 2.5rem;
-  color: #2c1810;
+  color: var(--text-color);
 }
 
 h3 {
   font-size: 2rem;
-  color: #2c1810;
+  color: var(--text-color);
 }
 
 p {
@@ -52,6 +54,23 @@ p {
   --light-bg: #f5f5f5;
   --white: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #ddd;
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --primary-color: #ff8c42;
+  --secondary-color: #ffb347;
+  --accent-color: #ff7f50;
+  --text-color: #e8e8e8;
+  --light-bg: #0d0d0d;
+  --white: #1a1a1a;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --bg-color: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --border-color: #333;
 }
 
 /* Buttons */
@@ -155,15 +174,32 @@ p {
 .form-control {
   width: 100%;
   padding: 12px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-color);
   border-radius: 5px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .form-control {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #999;
 }
 
 textarea.form-control {
@@ -191,6 +227,13 @@ textarea.form-control {
 
 .mt-4 {
   margin-top: 2rem;
+}
+
+/* Card styles for theme support */
+.card, .menu-item, .reservation-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Responsive */

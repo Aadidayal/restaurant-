@@ -33,7 +33,7 @@ const Signup = ({ setUser }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/signup', {
+      const response = await axios.post('http://localhost:5000/api/auth/signup', {
         name: formData.name,
         email: formData.email,
         password: formData.password
@@ -41,7 +41,7 @@ const Signup = ({ setUser }) => {
       
       if (response.data.success) {
         // Auto-login after signup
-        const loginResponse = await axios.post('http://localhost:3000/api/auth/login', {
+        const loginResponse = await axios.post('http://localhost:5000/api/auth/login', {
           email: formData.email,
           password: formData.password
         });

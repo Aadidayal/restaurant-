@@ -25,10 +25,10 @@ const AdminPortal = () => {
       }
 
       const [reservationsRes, usersRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/admin/reservations', {
+        axios.get('http://localhost:5000/api/admin/reservations', {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:3000/api/admin/users', {
+        axios.get('http://localhost:5000/api/admin/users', {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -50,7 +50,7 @@ const AdminPortal = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:3000/api/admin/reservations/${reservationId}/status`,
+        `http://localhost:5000/api/admin/reservations/${reservationId}/status`,
         { status, adminResponse },
         { headers: { Authorization: `Bearer ${token}` } }
       );

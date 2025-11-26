@@ -3,16 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: var(--light-bg);
+  transition: background-color 0.3s ease;
 }
 
 .login-form {
-  background: white;
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
   width: 100%;
   max-width: 400px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-form h2 {
@@ -29,22 +31,35 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-color);
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .form-group input {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-color);
   border-radius: 5px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #8B4513;
+  border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .form-group input {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #e8e8e8;
+}
+
+[data-theme="dark"] .form-group input::placeholder {
+  color: #999;
 }
 
 .error-message {
@@ -58,7 +73,7 @@
 
 button {
   width: 100%;
-  background: #8B4513;
+  background: var(--primary-color);
   color: white;
   padding: 0.75rem;
   border: none;
@@ -69,7 +84,7 @@ button {
 }
 
 button:hover {
-  background: #A0522D;
+  background: var(--secondary-color);
 }
 
 button:disabled {
