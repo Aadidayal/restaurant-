@@ -7,6 +7,8 @@ A modern, responsive restaurant website built with React.js, Node.js, Express, M
 - **User Authentication**: Secure login/signup system with JWT tokens
 - **Protected Reservations**: Users must login to make table reservations
 - **MongoDB Atlas**: All user data and reservations stored in cloud database
+- **Email Notifications**: Automated emails for reservation confirmations and status updates
+- **Admin Portal**: Manage reservations and users
 - **Modern Design**: Clean, elegant interface with responsive design
 - **Interactive Menu**: Dynamic menu with categories (Appetizers, Mains, Desserts)
 - **Online Reservations**: Table booking system with form validation (requires login)
@@ -30,6 +32,8 @@ resturant/
 │   │   ├── models/            # MongoDB models
 │   │   │   ├── User.js        # User model
 │   │   │   └── Reservation.js # Reservation model
+│   │   ├── services/          # Business logic services
+│   │   │   └── notificationService.js  # Email notifications
 │   │   ├── middleware/        # Custom middleware
 │   │   │   ├── auth.js        # JWT authentication
 │   │   │   ├── errorHandler.js
@@ -168,16 +172,58 @@ resturant/
 - **Animations**: Smooth hover effects and transitions
 - **Icons**: Emoji icons for visual appeal
 
-## 📧 Email Configuration
+#he project includes a complete email notification system with beautiful HTML templates!
 
-To enable email functionality:
+### Quick Setup (Gmail)
 
-1. Update `backend/.env` file:
+1. **Create/Use Gmail Account**
+
+2. **Enable 2-Step Verification**
+   - Go to Google Account → Security
+   - Enable 2-Step Verification
+
+3. **Generate App Password**
+   - Visit: https://myaccount.google.com/apppasswords
+   - Select "Mail" and "Other"
+   - Copy the 16-character password
+
+4. **Update .env file in backend folder**
    ```env
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASS=your_app_password
-   RESTAURANT_EMAIL=restaurant@rahulsirdadhaba.com
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-16-character-app-password
    ```
+
+5. **Test Your Setup**
+   ```bash
+   cd backend
+   # Update email in testEmail.js first
+   node testEmail.js
+   ```
+
+### Email Features
+
+- ✅ **Reservation Confirmation** - Sent when user creates reservation
+- 🎉 **Reservation Approval** - Sent when admin approves reservation
+- ❌ **Reservation Rejection** - Sent when admin rejects with reason
+- ⏰ **Reminders** - Can be scheduled for upcoming reservations
+
+### Detailed Guide
+
+See [backend/EMAIL_SETUP.md](backend/EMAIL_SETUP.md) for:
+- Complete setup instructions
+- Multiple email provider options
+- Troubleshooting guide
+- Email template customization
+- Security best practices
+
+### Email Templates Preview
+
+All emails include:
+- Professional HTML design
+- Restaurant branding
+- Reservation details
+- Contact information
+- Mobile-responsive layout
 
 2. Uncomment email configuration in `src/config/email.js`
 

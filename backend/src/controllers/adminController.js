@@ -1,5 +1,9 @@
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
+const { 
+  sendReservationApproval,
+  sendReservationRejection 
+} = require('../services/notificationService');
 
 // Get all users (admin endpoint)
 const getAllUsers = async (req, res) => {
@@ -87,9 +91,20 @@ const updateReservationStatus = async (req, res) => {
       });
     }
     
+    // Send email notification based on status (non-blocking)
+    if (status === 'approved') {
+      sendReservationApproval(reservation).catch(err => {
+        console.error('Email notification error:', err.message);
+      });
+    } else if (status === 'rejected') {
+      sendReservationRejection(reservation, adminResponse).catch(err => {
+        console.error('Email notification error:', err.message);
+      });
+    }
+    
     res.json({
       success: true,
-      message: `Reservation ${status} successfully`,
+      message: `Reservation ${status} successfully. Email notification sent to customer.`,
       reservation
     });
   } catch (error) {
