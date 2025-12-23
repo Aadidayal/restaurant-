@@ -13,7 +13,7 @@ const Footer = () => {
             
             {/* Restaurant Info */}
             <div className="footer-section">
-              <h3>Rahul Sir Da Dhaba</h3>
+              <h3>The Spice Route</h3>
               <p>
                 Authentic Indian cuisine served with passion and tradition since 1985. 
                 Experience the taste of India in every bite.
@@ -85,7 +85,7 @@ const Footer = () => {
         <div className="container">
           <div className="bottom-content">
             <div className="copyright">
-              <p>&copy; {currentYear} Rahul Sir Da Dhaba. All rights reserved.</p>
+              <p>&copy; {currentYear} The Spice Route. All rights reserved.</p>
             </div>
             <div className="footer-links-bottom">
               <a href="#">Privacy Policy</a>

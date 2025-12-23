@@ -73,6 +73,10 @@
   background: white;
 }
 
+.features h2 {
+  color: black;
+}
+
 .feature-card {
   text-align: center;
   padding: 3rem 2rem;
@@ -165,11 +169,12 @@
 
 /* CTA Section */
 .cta h2 {
-  color: white;
+  color: black;
   margin-bottom: 1rem;
 }
 
 .cta p {
+  color: grey;
   font-size: 1.3rem;
   margin-bottom: 2rem;
   opacity: 0.9;

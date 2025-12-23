@@ -39,7 +39,7 @@ app.use(requestLogger);
 app.get('/', (req, res) => {
   res.json({ 
     success: true,
-    message: 'Welcome to Rahul Sir Da Dhaba API!',
+    message: 'Welcome to The Spice Route API!',
     version: '1.0.0',
     endpoints: {
       menu: '/api/menu',
@@ -60,7 +60,7 @@ app.use(errorHandler);
 // Start server
 app.listen(PORT, () => {
   console.log(`
-🍽️  Rahul Sir Da Dhaba API Server
+🍽️  The Spice Route API Server
 🚀 Server running on port ${PORT}
 🌐 Environment: ${process.env.NODE_ENV || 'development'}
 📊 API Health Check: http://localhost:${PORT}/api/health

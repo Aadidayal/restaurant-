@@ -19,7 +19,7 @@ router.use('/contact', contactRoutes);
 router.get('/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Rahul Sir Da Dhaba API is running!',
+    message: 'The Spice Route API is running!',
     timestamp: new Date().toISOString(),
     version: '1.0.0'
   });

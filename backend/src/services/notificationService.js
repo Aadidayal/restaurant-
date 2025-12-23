@@ -8,9 +8,9 @@ const sendReservationConfirmation = async (reservation) => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
+      from: process.env.EMAIL_USER || 'noreply@thespiceroute.com',
       to: reservation.email,
-      subject: '🎉 Reservation Request Received - Rahul Sir Da Dhaba',
+      subject: '🎉 Reservation Request Received - The Spice Route',
       html: `
         <!DOCTYPE html>
         <html>
@@ -31,11 +31,11 @@ const sendReservationConfirmation = async (reservation) => {
         <body>
           <div class="container">
             <div class="header">
-              <h1>🍽️ Rahul Sir Da Dhaba</h1>
+              <h1>🍽️ The Spice Route</h1>
             </div>
             <div class="content">
               <h2>Hello ${reservation.name}! 👋</h2>
-              <p>Thank you for choosing Rahul Sir Da Dhaba! We've received your reservation request.</p>
+              <p>Thank you for choosing The Spice Route! We've received your reservation request.</p>
               
               <div class="details">
                 <h3>Reservation Details:</h3>
@@ -55,12 +55,12 @@ const sendReservationConfirmation = async (reservation) => {
               
               <p>If you have any questions or need to make changes, please contact us at:</p>
               <p>📞 Phone: +91-XXXXXXXXXX<br>
-              📧 Email: info@rahulsirdadhaba.com</p>
+              📧 Email: info@thespiceroute.com</p>
               
               <p>We look forward to serving you! 🙏</p>
             </div>
             <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Rahul Sir Da Dhaba. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} The Spice Route. All rights reserved.</p>
               <p>Serving authentic Indian cuisine with love ❤️</p>
             </div>
           </div>
@@ -86,9 +86,9 @@ const sendReservationApproval = async (reservation) => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
+      from: process.env.EMAIL_USER || 'noreply@thespiceroute.com',
       to: reservation.email,
-      subject: '✅ Reservation Confirmed - Rahul Sir Da Dhaba',
+      subject: '✅ Reservation Confirmed - The Spice Route',
       html: `
         <!DOCTYPE html>
         <html>
@@ -114,7 +114,7 @@ const sendReservationApproval = async (reservation) => {
             </div>
             <div class="content">
               <h2>Great News, ${reservation.name}! 🎉</h2>
-              <p>Your reservation at Rahul Sir Da Dhaba has been <strong>CONFIRMED</strong>!</p>
+              <p>Your reservation at The Spice Route has been <strong>CONFIRMED</strong>!</p>
               
               <div class="highlight">
                 <p style="margin: 0; font-size: 16px;"><strong>✨ We're excited to welcome you!</strong></p>
@@ -142,12 +142,12 @@ const sendReservationApproval = async (reservation) => {
               <p><strong>Need to make changes?</strong></p>
               <p>Contact us at:<br>
               📞 Phone: +91-XXXXXXXXXX<br>
-              📧 Email: info@rahulsirdadhaba.com</p>
+              📧 Email: info@thespiceroute.com</p>
               
               <p>We can't wait to serve you our delicious authentic Indian cuisine! 🍛</p>
             </div>
             <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Rahul Sir Da Dhaba. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} The Spice Route. All rights reserved.</p>
               <p>Serving authentic Indian cuisine with love ❤️</p>
             </div>
           </div>
@@ -173,9 +173,9 @@ const sendReservationRejection = async (reservation, reason = '') => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
+      from: process.env.EMAIL_USER || 'noreply@thespiceroute.com',
       to: reservation.email,
-      subject: 'Reservation Update - Rahul Sir Da Dhaba',
+      subject: 'Reservation Update - The Spice Route',
       html: `
         <!DOCTYPE html>
         <html>
@@ -197,7 +197,7 @@ const sendReservationRejection = async (reservation, reason = '') => {
             </div>
             <div class="content">
               <h2>Dear ${reservation.name},</h2>
-              <p>Thank you for your interest in dining at Rahul Sir Da Dhaba.</p>
+              <p>Thank you for your interest in dining at The Spice Route.</p>
               
               <div class="highlight">
                 <p style="margin: 0;"><strong>Unfortunately, we are unable to confirm your reservation for the requested date and time.</strong></p>
@@ -217,12 +217,12 @@ const sendReservationRejection = async (reservation, reason = '') => {
               <p><strong>We'd love to have you dine with us!</strong></p>
               <p>Please contact us to check availability for alternative dates and times:</p>
               <p>📞 Phone: +91-XXXXXXXXXX<br>
-              📧 Email: info@rahulsirdadhaba.com</p>
+              📧 Email: info@thespiceroute.com</p>
               
               <p>We apologize for any inconvenience and hope to serve you soon! 🙏</p>
             </div>
             <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Rahul Sir Da Dhaba. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} The Spice Route. All rights reserved.</p>
               <p>Serving authentic Indian cuisine with love ❤️</p>
             </div>
           </div>
@@ -248,9 +248,9 @@ const sendReservationReminder = async (reservation) => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
+      from: process.env.EMAIL_USER || 'noreply@thespiceroute.com',
       to: reservation.email,
-      subject: '⏰ Reminder: Your Reservation Tomorrow - Rahul Sir Da Dhaba',
+      subject: '⏰ Reminder: Your Reservation Tomorrow - The Spice Route',
       html: `
         <!DOCTYPE html>
         <html>
@@ -271,7 +271,7 @@ const sendReservationReminder = async (reservation) => {
             </div>
             <div class="content">
               <h2>Hi ${reservation.name}! 👋</h2>
-              <p>This is a friendly reminder about your upcoming reservation at Rahul Sir Da Dhaba.</p>
+              <p>This is a friendly reminder about your upcoming reservation at The Spice Route.</p>
               
               <div class="details">
                 <h3>Tomorrow's Reservation:</h3>
@@ -286,12 +286,12 @@ const sendReservationReminder = async (reservation) => {
               
               <p>Need to cancel or modify? Contact us:<br>
               📞 Phone: +91-XXXXXXXXXX<br>
-              📧 Email: info@rahulsirdadhaba.com</p>
+              📧 Email: info@thespiceroute.com</p>
               
               <p>See you tomorrow! 🍽️</p>
             </div>
             <div class="footer">
-              <p>&copy; ${new Date().getFullYear()} Rahul Sir Da Dhaba. All rights reserved.</p>
+              <p>&copy; ${new Date().getFullYear()} The Spice Route. All rights reserved.</p>
             </div>
           </div>
         </body>

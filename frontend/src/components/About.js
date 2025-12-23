@@ -7,7 +7,7 @@ const About = () => {
     <div className="about">
       <div className="about-hero">
         <div className="container">
-          <h1>About Rahul Sir Da Dhaba</h1>
+          <h1>About The Spice Route</h1>
           <p>A culinary journey that began in 1985</p>
         </div>
       </div>
@@ -21,7 +21,7 @@ const About = () => {
               <div className="story-text">
                 <h2>Our Story</h2>
                 <p>
-                  Rahul Sir Da Dhaba was born from a simple dream: to bring authentic flavors 
+                  The Spice Route was born from a simple dream: to bring authentic flavors 
                   to our community. Founded in 1985, our family restaurant has been a beloved
                   destination for nearly four decades.
                 </p>
