@@ -31,7 +31,7 @@ All emails are beautifully designed with HTML templates including:
 3. **Generate App Password**
    - Go to https://myaccount.google.com/apppasswords
    - Select "Mail" and "Other (Custom name)"
-   - Name it "Rahul Sir Da Dhaba"
+   - Name it "The Spice Route"
    - Click "Generate"
    - Copy the 16-character password
 
@@ -176,7 +176,7 @@ Edit `backend/src/services/notificationService.js`
 
 ### Change "From" Name
 ```javascript
-from: '"Rahul Sir Da Dhaba" <noreply@rahulsirdadhaba.com>'
+from: '"The Spice Route" <noreply@thespiceroute.com>'
 ```
 
 ### Add Attachments (e.g., menu PDF)

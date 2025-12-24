@@ -33,7 +33,7 @@ const sendContactMessage = async (req, res) => {
       // Email to restaurant
       const restaurantMailOptions = {
         from: email,
-        to: process.env.RESTAURANT_EMAIL || 'info@rahulsirdadhaba.com',
+        to: process.env.RESTAURANT_EMAIL || 'info@thespiceroute.com',
         subject: `Contact Form: ${subject}`,
         html: `
           <h2>New Contact Form Submission</h2>
@@ -47,15 +47,15 @@ const sendContactMessage = async (req, res) => {
       
       // Auto-reply to customer
       const customerReplyOptions = {
-        from: process.env.EMAIL_USER || 'noreply@rahulsirdadhaba.com',
+        from: process.env.EMAIL_USER || 'noreply@thespiceroute.com',
         to: email,
-        subject: 'Thank you for contacting Rahul Sir Da Dhaba',
+        subject: 'Thank you for contacting The Spice Route',
         html: `
           <h2>Thank you for your message!</h2>
           <p>Dear ${name},</p>
           <p>We have received your message regarding "${subject}" and will get back to you as soon as possible.</p>
           <p>Our team typically responds within 24 hours during business days.</p>
-          <p>Best regards,<br>Rahul Sir Da Dhaba Team</p>
+          <p>Best regards,<br>The Spice Route Team</p>
         `
       };
       

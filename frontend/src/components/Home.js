@@ -29,7 +29,7 @@ const Home = () => {
       {/* Features Section */}
       <section className="features section">
         <div className="container">
-          <h2 className="text-center mb-4">Why Choose Rahul Sir Da Dhaba?</h2>
+          <h2 className="text-center mb-4">Why Choose The Spice Route?</h2>
           <div className="grid grid-3">
             <div className="feature-card card text-center">
               <div className="feature-icon">🍝</div>
@@ -57,7 +57,7 @@ const Home = () => {
             <div className="about-text">
               <h2>Our Story</h2>
               <p>
-                Since 1985, Rahul Sir Da Dhaba has been serving the finest cuisine in the heart of the city. 
+                Since 1985, The Spice Route has been serving the finest cuisine in the heart of the city. 
                 Our family-owned restaurant combines traditional recipes with modern culinary techniques to 
                 create an unforgettable dining experience.
               </p>
