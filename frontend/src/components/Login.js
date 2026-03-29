@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './Login.css';
 
 const Login = ({ setUser }) => {
@@ -25,7 +26,7 @@ const Login = ({ setUser }) => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post(`${API_ENDPOINT}/auth/login`, formData);
       if (response.data.success) {
         // Store token and user data
         localStorage.setItem('token', response.data.token);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './MyReservations.css';
 
 const MyReservations = () => {
@@ -20,7 +21,7 @@ const MyReservations = () => {
         return;
       }
 
-      const response = await axios.get('http://localhost:5000/api/admin/my-reservations', {
+      const response = await axios.get(`${API_ENDPOINT}/admin/my-reservations`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './Signup.css';
 
 const Signup = ({ setUser }) => {
@@ -33,7 +34,7 @@ const Signup = ({ setUser }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post(`${API_ENDPOINT}/auth/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password
@@ -41,7 +42,7 @@ const Signup = ({ setUser }) => {
       
       if (response.data.success) {
         // Auto-login after signup
-        const loginResponse = await axios.post('http://localhost:5000/api/auth/login', {
+        const loginResponse = await axios.post(`${API_ENDPOINT}/auth/login`, {
           email: formData.email,
           password: formData.password
         });

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './Contact.css';
 
 const Contact = () => {
@@ -27,7 +28,7 @@ const Contact = () => {
     setSubmitMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post(`${API_ENDPOINT}/contact`, formData);
       
       if (response.data.success) {
         setSubmitType('success');

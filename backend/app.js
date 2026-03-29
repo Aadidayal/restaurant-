@@ -24,8 +24,13 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3001',
-    'http://localhost:3000'
-  ],
+    'http://localhost:3000',
+    'http://localhost:3001',
+    // AWS S3 Static Website Hosting domain
+    'http://restaurant-website-yourname.s3-website-us-east-1.amazonaws.com',
+    // Add your production domain here when you have one
+    process.env.PRODUCTION_FRONTEND_URL
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import { 
   paneertikkaimg,
   chicken65img, 
@@ -46,7 +47,7 @@ const Menu = () => {
 
   const fetchMenu = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/menu');
+      const response = await axios.get(`${API_ENDPOINT}/menu`);
       setMenuData(response.data);
       setLoading(false);
     } catch (err) {

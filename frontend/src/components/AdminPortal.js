@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './AdminPortal.css';
 
 const AdminPortal = () => {
@@ -25,10 +26,10 @@ const AdminPortal = () => {
       }
 
       const [reservationsRes, usersRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/admin/reservations', {
+        axios.get(`${API_ENDPOINT}/admin/reservations`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5000/api/admin/users', {
+        axios.get(`${API_ENDPOINT}/admin/users`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
@@ -50,7 +51,7 @@ const AdminPortal = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:5000/api/admin/reservations/${reservationId}/status`,
+        `${API_ENDPOINT}/admin/reservations/${reservationId}/status`,
         { status, adminResponse },
         { headers: { Authorization: `Bearer ${token}` } }
       );

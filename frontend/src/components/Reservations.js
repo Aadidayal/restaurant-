@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { API_ENDPOINT } from '../config/api';
 import './Reservations.css';
 
 const Reservations = ({ user }) => {
@@ -50,7 +51,7 @@ const Reservations = ({ user }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/reservation', formData, {
+      const response = await axios.post(`${API_ENDPOINT}/reservation`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
