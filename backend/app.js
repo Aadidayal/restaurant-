@@ -27,7 +27,7 @@ app.use(cors({
     'http://localhost:3000',
     'http://localhost:3001',
     // AWS S3 Static Website Hosting domain
-    'http://restaurant-website-yourname.s3-website-us-east-1.amazonaws.com',
+    'http://restaurant-website-aadi.s3-website-us-east-1.amazonaws.com',
     // Add your production domain here when you have one
     process.env.PRODUCTION_FRONTEND_URL
   ].filter(Boolean),
