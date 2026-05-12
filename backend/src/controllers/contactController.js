@@ -98,3 +98,7 @@ module.exports = {
   sendContactMessage,
   getContactMessages
 };
+
+// “This controller handles contact form submissions by validating input, creating a contact object, 
+// and sending two emails using Nodemailer—one to the admin and one as an auto-reply to the user. 
+// It also ensures the system remains responsive even if email sending fails.”

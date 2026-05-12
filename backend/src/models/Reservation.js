@@ -17,6 +17,23 @@ const reservationSchema = new mongoose.Schema({
   adminResponse: { type: String, default: '' },
   reviewedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   reviewedAt: { type: Date },
+  // NEW: Table assignment fields
+  assignedTables: [
+    { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'Table'
+    }
+  ],
+  totalSeatsAssigned: {
+    type: Number,
+    default: 0
+  },
+  availabilityRecords: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'TableAvailability'
+    }
+  ],
   createdAt: { type: Date, default: Date.now }
 });
 

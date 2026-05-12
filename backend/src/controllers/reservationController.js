@@ -18,6 +18,24 @@ const createReservation = async (req, res) => {
       });
     }
     
+    // Validate phone number - must be exactly 10 digits
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Phone number must be exactly 10 digits'
+      });
+    }
+
+    // Validate guest count
+    const guestCount = parseInt(guests);
+    if (guestCount < 1 || guestCount > 20) {
+      return res.status(400).json({
+        success: false,
+        message: 'Number of guests must be between 1 and 20'
+      });
+    }
+    
     // Save to MongoDB
     const reservation = await Reservation.create({
       user: req.user.userId,
@@ -26,7 +44,7 @@ const createReservation = async (req, res) => {
       phone,
       date,
       time,
-      guests: parseInt(guests),
+      guests: guestCount,
       message: message || '',
       status: 'pending',
     });

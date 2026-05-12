@@ -17,6 +17,7 @@ const Reservations = ({ user }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [submitType, setSubmitType] = useState(''); // 'success' or 'error'
+  const [phoneError, setPhoneError] = useState('');
 
   // If user is not logged in, show login prompt
   if (!user) {
@@ -38,16 +39,50 @@ const Reservations = ({ user }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // Phone number validation - only digits, max 10
+    if (name === 'phone') {
+      const phoneDigits = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(prev => ({
+        ...prev,
+        [name]: phoneDigits
+      }));
+      
+      // Show error if less than 10 digits
+      if (phoneDigits.length === 0) {
+        setPhoneError('');
+      } else if (phoneDigits.length < 10) {
+        setPhoneError(`Phone number must be 10 digits (${phoneDigits.length}/10)`);
+      } else {
+        setPhoneError('');
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitMessage('');
+
+    // Validate phone number
+    if (!formData.phone || formData.phone.length !== 10) {
+      setSubmitType('error');
+      setSubmitMessage('❌ Phone number must be exactly 10 digits');
+      return;
+    }
+
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.date || !formData.time || !formData.guests) {
+      setSubmitType('error');
+      setSubmitMessage('❌ Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const token = localStorage.getItem('token');
@@ -69,6 +104,7 @@ const Reservations = ({ user }) => {
           guests: '2',
           message: ''
         });
+        setPhoneError('');
       }
     } catch (error) {
       setSubmitType('error');
@@ -140,16 +176,19 @@ const Reservations = ({ user }) => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phone">Phone Number *</label>
+                    <label htmlFor="phone">Phone Number * <span className="label-hint">(10 digits)</span></label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="form-control"
+                      placeholder="1234567890"
+                      className={`form-control ${phoneError ? 'input-error' : ''}`}
+                      maxLength="10"
                       required
                     />
+                    {phoneError && <span className="error-text">⚠️ {phoneError}</span>}
                   </div>
 
                   <div className="grid grid-3">
@@ -199,7 +238,7 @@ const Reservations = ({ user }) => {
                         className="form-control"
                         required
                       >
-                        {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                        {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(num => (
                           <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
                         ))}
                       </select>

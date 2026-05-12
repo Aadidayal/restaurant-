@@ -28,3 +28,9 @@ const createTransporter = () => {
 module.exports = {
   createTransporter
 };
+
+
+// “I use Nodemailer to create a transporter with SMTP configuration.
+//  I store credentials in environment variables and use a fallback transport in development to avoid sending real emails.”
+
+//  It’s the standard protocol used to send emails over the internet.

@@ -13,9 +13,35 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('✅ Connected to MongoDB Atlas');
   } catch (err) {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error('❌ MongoDB connection error:', err.message)  ;
     process.exit(1);
   }
 };
 
 module.exports = connectDB;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// “I use Mongoose to connect MongoDB via an async function that reads the connection string from environment variables. 
+// I include validation, error handling, and stop the server if the connection fails to ensure reliability and security.”
