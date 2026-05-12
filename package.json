@@ -1,0 +1,24 @@
+{
+  "name": "restaurant-app",
+  "version": "1.0.0",
+  "description": "The Spice Route - Restaurant Reservation System",
+  "main": "backend/app.js",
+  "scripts": {
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm ci && npm run build",
+    "build:backend": "cd backend && npm ci",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd frontend && npm start\" \"cd backend && npm run dev\"",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": [
+    "restaurant",
+    "reservation",
+    "seating"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

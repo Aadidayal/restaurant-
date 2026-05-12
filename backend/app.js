@@ -4,6 +4,7 @@ dotenv.config();
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Import middleware
 const { logger, requestLogger } = require('./src/middleware/logger');
@@ -40,23 +41,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 app.use(requestLogger);
 
-// Routes
-app.get('/', (req, res) => {
-  res.json({ 
-    success: true,
-    message: 'Welcome to The Spice Route API!',
-    version: '1.0.0',
-    endpoints: {
-      menu: '/api/menu',
-      reservations: '/api/reservation',
-      contact: '/api/contact',
-      health: '/api/health'
-    }
-  });
-});
+// Serve static files from React build
+const frontendPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(frontendPath));
 
 // API routes
 app.use('/api', apiRoutes);
+
+// Serve React app for all non-API routes (SPA fallback)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
 
 // Error handling middleware (must be last)
 app.use(notFound);
