@@ -19,10 +19,10 @@ const Footer = () => {
                 Experience the taste of India in every bite.
               </p>
               <div className="social-links">
-                <a href="#" className="social-link">📘</a>
-                <a href="#" className="social-link">📷</a>
-                <a href="#" className="social-link">🐦</a>
-                <a href="#" className="social-link">⭐</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link">📘</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link">📷</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">🐦</a>
+                <a href="https://google.com" target="_blank" rel="noopener noreferrer" className="social-link">⭐</a>
               </div>
             </div>
 
@@ -88,9 +88,9 @@ const Footer = () => {
               <p>&copy; {currentYear} The Spice Route. All rights reserved.</p>
             </div>
             <div className="footer-links-bottom">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Accessibility</a>
+              <button onClick={() => {}} className="footer-link-btn">Privacy Policy</button>
+              <button onClick={() => {}} className="footer-link-btn">Terms of Service</button>
+              <button onClick={() => {}} className="footer-link-btn">Accessibility</button>
             </div>
           </div>
         </div>
