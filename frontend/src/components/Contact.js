@@ -203,10 +203,10 @@ const Contact = () => {
                 <div className="social-section">
                   <h3>Follow Us</h3>
                   <div className="social-links">
-                    <a href="#" className="social-link">📘</a>
-                    <a href="#" className="social-link">📷</a>
-                    <a href="#" className="social-link">🐦</a>
-                    <a href="#" className="social-link">⭐</a>
+                    <a href="https://facebook.com" className="social-link" target="_blank" rel="noopener noreferrer">📘</a>
+                    <a href="https://instagram.com" className="social-link" target="_blank" rel="noopener noreferrer">📷</a>
+                    <a href="https://twitter.com" className="social-link" target="_blank" rel="noopener noreferrer">🐦</a>
+                    <a href="https://google.com/maps" className="social-link" target="_blank" rel="noopener noreferrer">⭐</a>
                   </div>
                 </div>
               </div>
