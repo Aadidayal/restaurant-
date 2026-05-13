@@ -155,6 +155,8 @@ const assignTablesToReservation = async (reservationId, tableIds, date, time) =>
   session.startTransaction();
 
   try {
+    console.log(`📌 Assigning ${tableIds.length} tables to reservation ${reservationId} on ${date} at ${time}`);
+    
     // Check if tables are still available
     const bookedRecords = await TableAvailability.find({
       table: { $in: tableIds },
@@ -195,10 +197,12 @@ const assignTablesToReservation = async (reservationId, tableIds, date, time) =>
           { session }
         );
         avail = avail[0];
+        console.log(`   ✓ Created new TableAvailability record for table ${tableId}`);
       } else {
         avail.isBooked = true;
         avail.reservation = reservationId;
         await avail.save({ session });
+        console.log(`   ✓ Updated existing TableAvailability record for table ${tableId}`);
       }
 
       availabilityRecords.push(avail._id);
@@ -216,9 +220,11 @@ const assignTablesToReservation = async (reservationId, tableIds, date, time) =>
     ).populate('assignedTables');
 
     await session.commitTransaction();
+    console.log(`✅ Successfully assigned ${availabilityRecords.length} tables to reservation`);
     return reservation;
   } catch (error) {
     await session.abortTransaction();
+    console.error(`❌ Error assigning tables: ${error.message}`);
     throw error;
   } finally {
     session.endSession();
@@ -260,8 +266,10 @@ const releaseTablesFromReservation = async (reservationId) => {
  */
 const getAvailabilityReport = async (date) => {
   try {
-    const timeSlots = ['11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'];
+    const timeSlots = ['5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM'];
     const report = {};
+
+    console.log(`📅 Generating availability report for date: ${date}`);
 
     for (let time of timeSlots) {
       const bookedAvailability = await TableAvailability.find({
@@ -273,6 +281,8 @@ const getAvailabilityReport = async (date) => {
       const allTables = await Table.find({ isActive: true });
       const totalCapacity = allTables.reduce((sum, t) => sum + t.capacity, 0);
       const bookedCapacity = bookedAvailability.reduce((sum, a) => sum + (a.table?.capacity || 0), 0);
+
+      console.log(`   ${time}: Found ${bookedAvailability.length} booked records, booked capacity: ${bookedCapacity}/${totalCapacity}`);
 
       report[time] = {
         bookedTables: bookedAvailability.map(a => ({

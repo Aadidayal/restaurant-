@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, getAllReservations, getUserReservations, updateReservationStatus, getAvailabilitySnapshot, getSeatingHistory } = require('../controllers/adminController');
+const { getAllUsers, getAllReservations, getUserReservations, updateReservationStatus, getAvailabilitySnapshot, getSeatingHistory, repairApprovedReservations, debugDatabaseState } = require('../controllers/adminController');
 const auth = require('../middleware/auth');
 const { requireAdmin } = require('../middleware/adminAuth');
+
+// Public debug endpoints (no auth required)
+router.get('/debug-state', debugDatabaseState);
+router.get('/repair-reservations', repairApprovedReservations);
 
 // Admin routes (require admin privileges)
 router.get('/users', auth, requireAdmin, getAllUsers);

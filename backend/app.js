@@ -49,7 +49,7 @@ app.use(express.static(frontendPath));
 app.use('/api', apiRoutes);
 
 // Serve React app for all non-API routes (SPA fallback)
-app.get('*', (req, res) => {
+app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 

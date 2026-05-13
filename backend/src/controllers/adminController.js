@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
 const Table = require('../models/Table');
+const TableAvailability = require('../models/TableAvailability');
 const { 
   sendReservationApproval,
   sendReservationRejection 
@@ -93,8 +94,15 @@ const updateReservationStatus = async (req, res) => {
     // ========== CRITICAL: Check table availability before approval ==========
     if (status === 'approved') {
       try {
+        console.log(`\n🔵 APPROVAL REQUEST for reservation ${reservationId}`);
+        console.log(`   Reservation date: ${reservation.date}`);
+        console.log(`   Reservation time: ${reservation.time}`);
+        console.log(`   Guest count: ${reservation.guests}`);
+        
         // First, check if any tables exist in the system
         const totalTables = await Table.countDocuments({ isActive: true });
+        console.log(`   Total active tables: ${totalTables}`);
+        
         if (totalTables === 0) {
           return res.status(400).json({
             success: false,
@@ -105,16 +113,18 @@ const updateReservationStatus = async (req, res) => {
         }
 
         // Find best table combination for this reservation
+        console.log(`   Searching for best table combination...`);
         const bestCombination = await findBestTableCombination(
           reservation.date,
           reservation.time,
           reservation.guests
         );
+        console.log(`   Best combination result:`, bestCombination ? `Found ${bestCombination.totalTables} table(s)` : 'No combination found');
 
         if (!bestCombination) {
           // Try to find available times on the same date for helpful suggestion
           const availableTimesOnDate = [];
-          const timeSlotsToCheck = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'];
+          const timeSlotsToCheck = ['5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM'];
           
           for (const timeSlot of timeSlotsToCheck) {
             if (timeSlot !== reservation.time) {
@@ -314,13 +324,91 @@ const getSeatingHistory = async (req, res) => {
   }
 };
 
+// Repair missing TableAvailability records for approved reservations
+const repairApprovedReservations = async (req, res) => {
+  try {
+    console.log('\n🔧 REPAIR: Starting repair of approved reservations...');
+    
+    // Find all approved reservations
+    const approvedReservations = await Reservation.find({ status: 'approved' });
+    console.log(`Found ${approvedReservations.length} approved reservations`);
+    
+    let repaired = 0;
+    
+    for (let i = 0; i < approvedReservations.length; i++) {
+      const reservation = approvedReservations[i];
+      console.log(`\nProcessing reservation ${i + 1}/${approvedReservations.length}:`);
+      console.log(`  ID: ${reservation._id}`);
+      console.log(`  Date: ${reservation.date}, Time: ${reservation.time}`);
+      console.log(`  Guests: ${reservation.guests}`);
+      console.log(`  Assigned tables: ${reservation.assignedTables?.length || 0}`);
+      console.log(`  Availability records: ${reservation.availabilityRecords?.length || 0}`);
+      
+      if (!reservation.assignedTables || reservation.assignedTables.length === 0) {
+        console.log(`  ⚠️ No assigned tables - skipping`);
+        continue;
+      }
+      
+      if (reservation.availabilityRecords && reservation.availabilityRecords.length > 0) {
+        console.log(`  ✓ Already has availability records`);
+        continue;
+      }
+      
+      // Create missing TableAvailability records
+      const availRecords = [];
+      for (const tableId of reservation.assignedTables) {
+        const avail = await TableAvailability.create({
+          table: tableId,
+          date: reservation.date,
+          timeSlot: reservation.time,
+          isBooked: true,
+          reservation: reservation._id
+        });
+        availRecords.push(avail._id);
+        console.log(`  ✓ Created TableAvailability record`);
+      }
+      
+      // Update reservation
+      await Reservation.updateOne(
+        { _id: reservation._id },
+        { availabilityRecords: availRecords }
+      );
+      
+      repaired++;
+      console.log(`  ✅ Repaired`);
+    }
+    
+    console.log(`\n✅ Repair complete! ${repaired} reservations fixed.`);
+    
+    res.json({
+      success: true,
+      message: `Repair complete. Fixed ${repaired} reservations.`,
+      fixed: repaired
+    });
+  } catch (error) {
+    console.error('❌ Repair error:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Error repairing reservations',
+      error: error.message
+    });
+  }
+};
+
+// Debug endpoint - test connectivity
+const debugDatabaseState = async (req, res) => {
+  res.json({ success: true, message: 'Debug endpoint working' });
+};
+
 module.exports = {
   getAllUsers,
   getAllReservations,
   getUserReservations,
   updateReservationStatus,
   getAvailabilitySnapshot,
-  getSeatingHistory
+  getSeatingHistory,
+  repairApprovedReservations,
+  debugDatabaseState
 };
 // “This controller manages user and reservation data. 
 // It includes admin endpoints for fetching all users and reservations, and user-specific endpoints for viewing
