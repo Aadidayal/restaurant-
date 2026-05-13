@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { API_ENDPOINT } from '../config/api';
 import './TableManagement.css';
@@ -22,10 +22,28 @@ const TableManagement = () => {
     description: ''
   });
 
+  const fetchAvailability = useCallback(async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(
+        `${API_ENDPOINT}/admin/availability?date=${selectedDate}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      if (response.data.success) {
+        setAvailability(response.data.availabilityReport || {});
+      }
+    } catch (err) {
+      console.error('Error fetching availability:', err);
+    }
+  }, [selectedDate]);
+
   useEffect(() => {
     fetchTables();
     fetchAvailability();
-  }, [selectedDate]);
+  }, [selectedDate, fetchAvailability]);
 
   const fetchTables = async () => {
     try {
@@ -42,24 +60,6 @@ const TableManagement = () => {
       setError(err.response?.data?.message || 'Error fetching tables');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fetchAvailability = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(
-        `${API_ENDPOINT}/admin/availability?date=${selectedDate}`,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-
-      if (response.data.success) {
-        setAvailability(response.data.availabilityReport || {});
-      }
-    } catch (err) {
-      console.error('Error fetching availability:', err);
     }
   };
 
